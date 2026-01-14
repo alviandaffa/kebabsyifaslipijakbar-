@@ -1,0 +1,660 @@
+# <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kebab Syifa Slipi - Kebab Lezat Jakarta Barat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #F97316;
+            --secondary: #F59E0B;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+            --accent: #10B981;
+        }
+        
+        body {
+            background-color: #fefefe;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo i {
+            font-size: 2.5rem;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            color: #FFFBEB;
+            text-decoration: underline;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+        }
+        
+        .cta-button:hover {
+            background-color: #EA580C;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.6);
+        }
+        
+        /* Menu Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 10px 25px;
+            background-color: #E5E7EB;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .menu-item {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        
+        .menu-item-img {
+            height: 200px;
+            background-color: #F3F4F6;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-item-img:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .menu-item-content {
+            padding: 20px;
+        }
+        
+        .menu-item-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .menu-item-title h3 {
+            font-size: 1.4rem;
+        }
+        
+        .price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .menu-item p {
+            color: #6B7280;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .order-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .order-btn:hover {
+            background-color: #059669;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            padding: 60px 0;
+            background-color: #FFF7ED;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            height: 250px;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+        
+        /* Contact & Social Media */
+        .contact-section {
+            background-color: #FEF3C7;
+            padding: 60px 0;
+            margin-top: 40px;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info h3, .social-media h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .copyright {
+            border-top: 1px solid #374151;
+            padding-top: 20px;
+            color: #9CA3AF;
+            font-size: 0.9rem;
+        }
+        
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+                display: none;
+            }
+            
+            nav.active ul {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 25px;
+                right: 20px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                padding: 0 15px;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+        }
+        
+        /* Animation for menu items */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .menu-item {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        /* Promo Badge */
+        .promo-badge {
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background-color: #EF4444;
+            color: white;
+            padding: 5px 35px;
+            transform: rotate(45deg);
+            font-weight: bold;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+        
+        .promo-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6281234567890?text=Halo%20Kebab%20Syifa%2C%20saya%20mau%20pesan%20kebab" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+                <div class="logo-text">
+                    <h1>Kebab Syifa Slipi</h1>
+                    <p>Kebab Lezat & Terjangkau di Jakarta Barat</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Galeri</a></li>
+                    <li><a href="#contact">Kontak & Pemesanan</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Kebab Terlezat di Slipi</h2>
+            <p>Daging sapi & ayam fresh, roti homemade, dengan harga terjangkau. Rasakan kelezatan autentik kebab yang langsung dipanggang di depan Anda!</p>
+            <a href="#menu" class="cta-button">Lihat Menu & Pesan Sekarang</a>
+        </div>
+    </section>
+    
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Menu Kebab Syifa</h2>
+            </div>
+            
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="all">Semua</button>
+                <button class="category-btn" data-category="original">Original Series</button>
+                <button class="category-btn" data-category="spicy">Pedas Series</button>
+                <button class="category-btn" data-category="premium">Premium</button>
+            </div>
+            
+            <div class="menu-grid" id="menuGrid">
+                <!-- Menu items will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galeri Kebab Syifa</h2>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kebab Daging Sapi" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Proses Pembuatan Kebab" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kebab Ayam" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kebab dengan Keju" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kebab Siap Santap" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kebab dengan Sayuran Segar" class="gallery-img">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact & Social Media Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Hubungi & Pesan</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Lokasi</h4>
+                            <p>Jl. Slipi Raya No. 123, Slipi, Jakarta Barat<br>(Dekat Pom Bensin Slipi)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Jam Buka</h4>
+                            <p>Setiap Hari: 10:00 - 22:00 WIB</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Telepon / WhatsApp</h4>
+                            <p><strong>0812-3456-7890</strong><br>Klik tombol hijau di kanan bawah untuk pesan via WhatsApp!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-media">
+                    <h3>Follow & Update Promo</h3>
+                    <p>Ikuti kami di media sosial untuk info promo terbaru, menu spesial, dan konten menarik lainnya!</p>
+                    
+                    <div class="social-links">
+                        <a href="https://instagram.com/kebabsyifa.slipi" class="social-link" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com/kebabsyifa.slipi" class="social-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
